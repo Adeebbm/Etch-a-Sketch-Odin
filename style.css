@@ -1,0 +1,96 @@
+body{
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.settings{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gainsboro;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 3px;
+    padding: 32px;
+    gap: 10%;
+}
+
+.background-settings,
+.brush-settings{
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 300px;
+    align-items: center;
+    background-color: gray;
+}
+
+.background-colors,
+.brush-colors{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;padding: 16px;
+    min-width: 300px;
+}
+
+.color-button{
+    width: 32px;
+    height: 32px;
+    margin: 1px;
+    border-style: solid;
+    border-color: gray;
+    border-width: 1px;
+}
+
+img{
+    width: 53px;
+    height: 52px;
+}
+
+.eraser-button-container,
+.brush-button-container{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    background-color: white;
+    border: 2px solid gray;
+    padding: 6px;
+}
+
+.background-txt,
+.brush-txt{
+    font-size: large;
+    padding: 6px;
+    color: white;
+    font-weight: 800;
+}
+
+.settings-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.scale-settings{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.scale-input{
+    width: 256px;
+    height: 56px;
+    font-size: 32px;
+    border-radius: 5px;
+}
+
+.scale-submit-button{
+    height: 60px;
+    width: auto;
+    font-size: 32px;
+    border-radius: 8px;
+}
