@@ -12,19 +12,30 @@ function addFirstPixel(){
 }
 
 function mouseAction(pixel){
-    if(brush)pixel.style.backgroundColor = brush_color;
+    if(brush){
+        if(brush_color == 'random'){
+            //pixel.style.backgroundColor = colors[Math.floor(Math.random() * 12)];
+            pixel.style.backgroundColor = colorBox.style.backgroundColor;
+        }
+        else{ 
+            pixel.style.backgroundColor = brush_color;
+        }
+    }
     else if(eraser)pixel.style.backgroundColor = background_color;
 }
 
+//Scale input variables
 let scale_submit = document.querySelector(".scale-submit-button");
 let input = document.querySelector("input");
 let container = document.querySelector(".sketch");
 
+//Scale change and pixel size variables
 let container_height = container.clientHeight;
 let container_width = container.clientWidth;
 let background_color = 'white';
 let brush_color = 'black';
 
+//changing background and brush color variables 
 let background_color_buttons = document.querySelectorAll(".background-colors .color-button");
 let brush_color_buttons = document.querySelectorAll(".brush-colors .color-button");
 
@@ -76,6 +87,7 @@ scale_submit.addEventListener('click', ()=>{ // Change scale according to input
 background_color_buttons.forEach((button)=>{
     button.addEventListener('click',()=>{
         background_color = button.style.backgroundColor;
+
         const pixels = container.querySelectorAll('div');
         pixels.forEach(pixel => pixel.style.backgroundColor = background_color);
     });
@@ -84,6 +96,7 @@ background_color_buttons.forEach((button)=>{
 brush_color_buttons.forEach((button)=>{
     button.addEventListener('click',()=>{
         brush_color = button.style.backgroundColor;
+        if(button.classList.contains("rainbow"))brush_color = 'random';
     });
 });
 
@@ -100,3 +113,15 @@ eraser_button.addEventListener('click',()=>{
     eraser_button.style.backgroundColor = "yellow";
     brush_button.style.backgroundColor = "white";
 });
+
+//Random brush color feature
+const colors = ['red','orange','yellow','chartreuse','green','springgreen','cyan','azure','blue','violet','magenta','pink'];
+const colorBox = document.querySelector('.rainbow');
+
+let currentIndex = 0;
+
+function changeColor() {
+    currentIndex = (currentIndex + 1) % colors.length;
+    colorBox.style.backgroundColor = colors[currentIndex];
+}
+setInterval(changeColor, 500);

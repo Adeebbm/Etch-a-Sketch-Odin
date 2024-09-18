@@ -106,3 +106,7 @@ img{
 .pixel{
     box-sizing: border-box;
 }
+
+.rainbow{
+    transition: background-color 1s ease;
+}
