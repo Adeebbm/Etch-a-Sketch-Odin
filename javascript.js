@@ -11,6 +11,11 @@ function addFirstPixel(){
     container.appendChild(pixel);
 }
 
+function mouseAction(pixel){
+    if(brush)pixel.style.backgroundColor = brush_color;
+    else if(eraser)pixel.style.backgroundColor = background_color;
+}
+
 let scale_submit = document.querySelector(".scale-submit-button");
 let input = document.querySelector("input");
 let container = document.querySelector(".sketch");
@@ -23,12 +28,19 @@ let brush_color = 'black';
 let background_color_buttons = document.querySelectorAll(".background-colors .color-button");
 let brush_color_buttons = document.querySelectorAll(".brush-colors .color-button");
 
-let brush = false; //shows if brush button has been pressed or not
+let brush = true; //shows if brush button has been pressed or not
 let eraser = false; // shows if eraser button has been pressed or not
 let brush_button = document.querySelector(".brush-button-container");
+brush_button.style.backgroundColor = 'orange';
 let eraser_button = document.querySelector(".eraser-button-container");
+let isMouseDown = false;
 
 addFirstPixel(); // Initially the sketch container is empty
+
+
+document.addEventListener('mousedown',()=>{isMouseDown = true});
+document.addEventListener('mouseup', ()=>{isMouseDown = false});
+
 
 scale_submit.addEventListener('click', ()=>{ // Change scale according to input
     let inp = parseInt(input.value);
@@ -53,6 +65,9 @@ scale_submit.addEventListener('click', ()=>{ // Change scale according to input
             pixel.style.height = `${pixel_height}px`;
             pixel.style.width = `${pixel_width}px`;
             container.appendChild(pixel);
+            pixel.addEventListener('mouseenter',()=>{
+                if(isMouseDown)mouseAction(pixel);
+            });
         }
     }
 
