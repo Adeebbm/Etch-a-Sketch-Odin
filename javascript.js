@@ -2,7 +2,7 @@ function clearPixels() {
     const pixels = container.querySelectorAll('div');
   
     pixels.forEach(pixel => container.removeChild(pixel));
-  }
+}
 
 let scale_submit = document.querySelector(".scale-submit-button");
 let input = document.querySelector("input");
@@ -13,7 +13,11 @@ let container_width = container.clientWidth;
 let background_color = 'white';
 let brush_color = 'black';
 
-scale_submit.addEventListener('click', ()=>{
+let background_color_buttons = document.querySelectorAll(".background-colors .color-button");
+let brush_color_buttons = document.querySelectorAll(".brush-colors .color-button");
+
+
+scale_submit.addEventListener('click', ()=>{ // Change scale according to input
     let inp = parseInt(input.value);
     if(input.value > 0){
         clearPixels();
@@ -39,4 +43,18 @@ scale_submit.addEventListener('click', ()=>{
         }
     }
 
+});
+
+background_color_buttons.forEach((button)=>{
+    button.addEventListener('click',()=>{
+        background_color = button.style.backgroundColor;
+        const pixels = container.querySelectorAll('div');
+        pixels.forEach(pixel => pixel.style.backgroundColor = background_color);
+    });
+});
+
+brush_color_buttons.forEach((button),()=>{
+    button.addEventListener('click',()=>{
+        brush_color = button.style.backgroundColor;
+    });
 });
