@@ -7,13 +7,13 @@ body{
 .settings{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     background-color: gainsboro;
     border-bottom-style: solid;
     border-bottom-color: black;
     border-bottom-width: 3px;
     padding: 32px;
-    gap: 10%;
+    gap: 5px;
 }
 
 .background-settings,
